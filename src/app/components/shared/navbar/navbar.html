@@ -1,0 +1,37 @@
+<style>
+nav {
+display: flex;
+justify-content: space-around;
+background-color: black;
+color: aliceblue;
+padding: 10px;
+}
+nav a {
+  color: antiquewhite;
+  text-decoration: none;
+}
+
+nav a.active{
+  color: crimson;
+  text-decoration: underline;
+}
+
+
+</style>
+
+
+
+
+<nav>
+
+<a routerLink="/" routerLinkActive="active"
+  [routerLinkActiveOptions]="{exact:true}">Principal</a>
+
+<a routerLink="/articulos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Articulos</a>
+
+<a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Login</a>
+
+
+
+
+</nav>
