@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <h2>Gestión de Artículos</h2>
+
+  <!-- Formulario para agregar artículo -->
+  <form [formGroup]="articuloForm" (ngSubmit)="agregarArticulo()" class="mb-4">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre" />
+      @if (articuloForm.get('nombre')?.invalid && articuloForm.get('nombre')?.touched) {
+        <div class="text-danger">
+          El nombre es obligatorio
+        </div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Características</label>
+      <textarea class="form-control" formControlName="caracteristicas"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Precio</label>
+      <input type="number" class="form-control" formControlName="precio" />
+      @if (articuloForm.get('precio')?.invalid && articuloForm.get('precio')?.touched) {
+        <div class="text-danger">
+          El precio debe ser un número válido mayor o igual a 0
+        </div>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="articuloForm.invalid">
+      Agregar
+    </button>
+  </form>
+
+  <!-- Lista de artículos -->
+  <h3>Lista de Artículos</h3>
+
+  @if (articulos.length === 0) {
+    <p>No hay artículos disponibles.</p>
+  } @else {
+    <ul class="list-group">
+      @for (art of articulos; track art.id) {
+        <li class="list-group-item">
+          <strong>{{ art.nombre }}</strong> - {{ art.caracteristicas }} - {{ art.precio }}€
+        </li>
+      }
+    </ul>
+  }
+</div>
+
+
