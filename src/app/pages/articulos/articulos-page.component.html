@@ -28,9 +28,19 @@
       }
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="articuloForm.invalid">
-      Agregar
-    </button>
+    @if (!editandoId) {
+      <button type="submit" class="btn btn-primary" [disabled]="articuloForm.invalid">
+        Agregar
+      </button>
+    }
+    @if (editandoId) {
+      <button type="button" class="btn btn-success me-2" (click)="modificarArticulo()" [disabled]="articuloForm.invalid">
+        Modificar
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+        Cancelar
+      </button>
+    }
   </form>
 
   <!-- Lista de artículos -->
@@ -41,8 +51,14 @@
   } @else {
     <ul class="list-group">
       @for (art of articulos; track art.id) {
-        <li class="list-group-item">
-          <strong>{{ art.nombre }}</strong> - {{ art.caracteristicas }} - {{ art.precio }}€
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ art.nombre }}</strong> - {{ art.caracteristicas }} - {{ art.precio }}€
+          </div>
+          <div>
+            <button class="btn btn-warning btn-sm me-2" (click)="editarArticulo(art)">Modificar</button>
+            <button class="btn btn-danger btn-sm" (click)="borrarArticulo(art.id)">Borrar</button>
+          </div>
         </li>
       }
     </ul>
