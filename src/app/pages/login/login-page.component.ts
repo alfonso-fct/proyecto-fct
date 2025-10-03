@@ -1,20 +1,62 @@
 import { ChangeDetectionStrategy,Component,signal } from "@angular/core";
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { SupabaseService } from "../../services/supabase.service";
+import { CommonModule } from "@angular/common";
+
+
+
+
+
+
+
+
+
+
 @Component({
 
 templateUrl:`./login-page.component.html`,
-imports:[ReactiveFormsModule],
+imports:[ReactiveFormsModule,CommonModule],
+ standalone: true,
 
 
 })
 
-export class LoginPageComponent {
+export class RegistroUsuario {
+  registerForm: FormGroup;
+ loading = false;
+  message = '';
+
+   constructor(
+    private fb: FormBuilder,
+    private supabase: SupabaseService
+  ) {
 
 
-  usuarioRegistrado = signal<{ nombre: string; email: string; password: string } | null>(null);
 
- constructor(private fb: FormBuilder) {}
+  this.registerForm = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });}
 
-  
+  async onSubmit() {
+    this.loading = true;
+    this.message = '';
+
+    const { name, email, password } = this.registerForm.value;
+
+    if (email && password && name) {
+      const { error } = await this.supabase.signUp(email, password, name);
+
+      if (error) {
+        this.message = 'Error: ' + error.message;
+      } else {
+        this.message = 'Registro exitoso. Revisa tu correo para confirmar tu cuenta.';
+      }
+    }
+
+    this.loading = false;
+  }
+
 }
 

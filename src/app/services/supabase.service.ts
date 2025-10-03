@@ -6,6 +6,9 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
   providedIn: 'root'
 })
 export class SupabaseService {
+  signUp(email: string, password: string, name: string): { error: any; } | PromiseLike<{ error: any; }> {
+    throw new Error("Method not implemented.");
+  }
   private supabase: SupabaseClient;
 
   constructor() {
@@ -32,4 +35,23 @@ export class SupabaseService {
     if (error) throw error;
     return data;
   }
+
+//Metodos para el registro de usuarios
+  async getUsuarios() {
+    const { data, error } = await this.supabase
+      .from('usuarios')
+      .select('*');
+    if (error) throw error;
+    return data;
+  }
+
+  // Método para insertar un artículo
+  async addUsuarios(nombre: string, email: string, password: string) {
+    const { data, error } = await this.supabase
+      .from('usuarios')
+      .insert([{ nombre: nombre, email: email, password: password }]);
+    if (error) throw error;
+    return data;
+  }
 }
+
