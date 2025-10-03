@@ -21,7 +21,7 @@ imports:[ReactiveFormsModule,CommonModule],
 
 })
 
-export class RegistroUsuario {
+export class RegistroUsuarioPageComponent {
   registerForm: FormGroup;
  loading = false;
   message = '';
