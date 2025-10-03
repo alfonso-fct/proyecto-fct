@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './articulos-page.component.html'
 })
+
+
 export class ArticulosPageComponent implements OnInit {
   articulos: any[] = [];
   articuloForm: FormGroup;
