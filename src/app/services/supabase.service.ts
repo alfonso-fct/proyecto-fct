@@ -36,6 +36,26 @@ export class SupabaseService {
     return data;
   }
 
+  // Método para borrar un artículo
+  async deleteArticulo(id: number) {
+    const { error } = await this.supabase
+      .from('articulos')
+      .delete()
+      .eq('id', id);
+    if (error) throw error;
+    return true;
+  }
+
+  // Método para modificar un artículo
+  async updateArticulo(id: number, nombre: string, caracteristicas: string, precio: number) {
+    const { error } = await this.supabase
+      .from('articulos')
+      .update({ nombre, caracteristicas, precio })
+      .eq('id', id);
+    if (error) throw error;
+    return true;
+  }
+
 //Metodos para el registro de usuarios
   async getUsuarios() {
     const { data, error } = await this.supabase
