@@ -46,7 +46,7 @@ export class RegistroUsuarioPageComponent {
     const { name, email, password } = this.registerForm.value;
 
     if (email && password && name) {
-      const { error } = await this.supabase.signUp(email, password, name);
+      const { error } = await this.supabase.addUsuarios(email, password, name);
 
       if (error) {
         this.message = 'Error: ' + error.message;

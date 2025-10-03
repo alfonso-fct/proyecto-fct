@@ -45,13 +45,17 @@ export class SupabaseService {
     return data;
   }
 
-  // Método para insertar un artículo
-  async addUsuarios(nombre: string, email: string, password: string) {
-    const { data, error } = await this.supabase
-      .from('usuarios')
-      .insert([{ nombre: nombre, email: email, password: password }]);
-    if (error) throw error;
-    return data;
-  }
+  // Método para añadir usuario
+ async addUsuarios(email: string, password: string, name: string) {
+  const { data, error } = await this.supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { name } // metadata del usuario
+    }
+  });
+
+  return { data, error };
+}
 }
 
