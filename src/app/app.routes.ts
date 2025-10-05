@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PrincipalPageComponent } from './pages/principal/principal-page.component';
 import { ArticulosPageComponent } from './pages/articulos/articulos-page.component';
+import { RegistroUsuarioPageComponent } from './pages/login/login-page.component';
 import { LoginPageComponent } from './pages/login/login-page.component';
 import { Contacto } from './pages/contacto/contacto';
 
@@ -17,7 +18,7 @@ export const routes: Routes = [
 },
 {
   path:'login',
-  component: LoginPageComponent,
+  component: RegistroUsuarioPageComponent,
 },
 {
   path:'contacto',

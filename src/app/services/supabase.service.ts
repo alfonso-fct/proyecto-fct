@@ -6,6 +6,9 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
   providedIn: 'root'
 })
 export class SupabaseService {
+  signUp(email: string, password: string, name: string): { error: any; } | PromiseLike<{ error: any; }> {
+    throw new Error("Method not implemented.");
+  }
   private supabase: SupabaseClient;
 
   constructor() {
@@ -32,4 +35,47 @@ export class SupabaseService {
     if (error) throw error;
     return data;
   }
+
+  // Método para borrar un artículo
+  async deleteArticulo(id: number) {
+    const { error } = await this.supabase
+      .from('articulos')
+      .delete()
+      .eq('id', id);
+    if (error) throw error;
+    return true;
+  }
+
+  // Método para modificar un artículo
+  async updateArticulo(id: number, nombre: string, caracteristicas: string, precio: number) {
+    const { error } = await this.supabase
+      .from('articulos')
+      .update({ nombre, caracteristicas, precio })
+      .eq('id', id);
+    if (error) throw error;
+    return true;
+  }
+
+//Metodos para el registro de usuarios
+  async getUsuarios() {
+    const { data, error } = await this.supabase
+      .from('usuarios')
+      .select('*');
+    if (error) throw error;
+    return data;
+  }
+
+  // Método para añadir usuario
+ async addUsuarios(email: string, password: string, name: string) {
+  const { data, error } = await this.supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { name } // metadata del usuario
+    }
+  });
+
+  return { data, error };
 }
+}
+
