@@ -1,0 +1,146 @@
+/* ====== NAVBAR BASE ====== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 40px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* ====== LOGO ====== */
+.logo {
+  width: 60px;
+  height: 60px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* ====== CENTER BUTTONS ====== */
+.navbar-center {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-btn {
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #333;
+}
+
+.nav-btn.active {
+  background-color: #26d9a7; /* verde menta */
+  color: #000;
+}
+
+/* ====== RIGHT SECTION ====== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #333;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #26d9a7;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+input:checked + .slider {
+  background-color: #111;
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* búsqueda */
+.nav-input {
+  background-color: transparent;
+  border: 1px solid #26d9a7;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+}
+
+/* ====== BOTONES LOGIN Y REGISTER ====== */
+.auth-btn {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-btn.login {
+  background-color: #26d9a7;
+  color: #000;
+}
+
+.auth-btn.register {
+  background-color: #26d9a7;
+  color: #000;
+}
+
+.auth-btn:hover {
+  filter: brightness(0.9);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .navbar-center {
+    order: 3;
+  }
+
+  .navbar-right {
+    order: 2;
+  }
+}
+

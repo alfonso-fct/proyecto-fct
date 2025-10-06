@@ -1,37 +1,24 @@
-<style>
-nav {
-display: flex;
-justify-content: space-around;
-background-color: black;
-color: aliceblue;
-padding: 10px;
-}
-nav a {
-  color: antiquewhite;
-  text-decoration: none;
-}
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="logo">LOGO</div>
+  </div>
 
-nav a.active{
-  color: crimson;
-  text-decoration: underline;
-}
+  <div class="navbar-center">
+    <button class="nav-btn" routerLink="/articulos" routerLinkActive="active">Productos</button>
+    <button class="nav-btn active" routerLink="" routerLinkActive="active">Inicio</button>
+    <button class="nav-btn"routerLink="" routerLinkActive="active">Pedidos</button>
+  </div>
 
+  <div class="navbar-right">
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
 
-</style>
+    <input type="text" placeholder="Placeholder" class="nav-input">
 
-
-
-
-<nav>
-
-<a routerLink="/" routerLinkActive="active"
-  [routerLinkActiveOptions]="{exact:true}">Principal</a>
-
-<a routerLink="/articulos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Articulos</a>
-
-<a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Registro Usuarios</a>
-
-
-
-
+    <button class="auth-btn login" routerLinkActive="/login">Login</button>
+    <button class="auth-btn register">Register</button>
+  </div>
 </nav>
+
