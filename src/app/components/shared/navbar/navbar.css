@@ -54,6 +54,12 @@
   gap: 10px;
 }
 
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* Switch */
 .switch {
   position: relative;
@@ -158,9 +164,4 @@ input:checked + .slider:before {
   max-width: 100vw;
   box-sizing: border-box;
 }
-
-  .navbar-right {
-    order: 2;
-  }
 }
-
