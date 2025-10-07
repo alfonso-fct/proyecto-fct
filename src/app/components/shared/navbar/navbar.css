@@ -60,6 +60,77 @@
   gap: 10px;
 }
 
+/* ===== LUPA ===== */
+
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: transparent;
+  height: 40px;
+  border-radius: 40px;
+  padding: 0;
+  width: 40px;
+  overflow: hidden;
+  transition: width 0.4s ease, background 0.3s ease, padding 0.3s ease;
+}
+
+.navbar-left .searchBox:hover,
+.navbar-left .searchBox:focus-within {
+  width: 240px;
+  background: #2f3640;
+  padding: 0 4px;
+}
+
+.searchBox:hover > .searchButton,
+.searchBox:focus-within > .searchButton {
+  background: white;
+  color: #2f3640;
+}
+
+.searchButton {
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.searchInput {
+  flex: 0 0 0;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.searchBox:hover > .searchInput,
+.searchBox:focus-within > .searchInput {
+  flex: 1;
+  opacity: 1;
+  padding: 0 10px 0 12px;
+}
+
+@media screen and (max-width: 620px) {
+  .navbar-left .searchBox:hover,
+  .navbar-left .searchBox:focus-within {
+    width: 180px;
+  }
+}
+
 /* Switch */
 .switch {
   position: relative;
@@ -164,4 +235,6 @@ input:checked + .slider:before {
   max-width: 100vw;
   box-sizing: border-box;
 }
+
+
 }
