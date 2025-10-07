@@ -1,0 +1,44 @@
+/* Estilo para los títulos secundarios debajo de las imágenes */
+.titulo-secundario {
+  font-family: 'Orbitron', 'Arial', sans-serif;
+  font-size: 2rem;
+  color: #00bcd4;
+  text-shadow: 1px 1px 6px #222, 0 0 6px #00bcd4;
+  letter-spacing: 1px;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.3s;
+}
+.titulo-secundario:hover {
+  color: #ff4081;
+  text-shadow: 1px 1px 10px #222, 0 0 10px #ff4081;
+}
+/* Estilo para el título principal */
+h1 {
+  font-family: 'Orbitron', 'Arial', sans-serif;
+  font-size: 3rem;
+  color: #00bcd4;
+  text-shadow: 2px 2px 8px #222, 0 0 10px #00bcd4;
+  letter-spacing: 2px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+h1:hover {
+  color: #ff4081;
+  text-shadow: 2px 2px 12px #222, 0 0 16px #ff4081;
+}
+.logo {
+  width: 200px;
+  height: 200px;
+  background-color: #bbb;
+  border-radius: 60%;
+  border: #bbb solid 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
