@@ -6,13 +6,14 @@ import { Navbar } from "./components/shared/navbar/navbar";
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticulosPageComponent } from './pages/articulos/articulos-page.component';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from "./components/shared/footer/footer.component";
 
 
 @Component({
 
   selector: 'app-root',
    standalone: true,
-  imports: [RouterOutlet, Navbar,ReactiveFormsModule],
+  imports: [RouterOutlet, Navbar, ReactiveFormsModule, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 

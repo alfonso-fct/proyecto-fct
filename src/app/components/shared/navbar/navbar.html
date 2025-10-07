@@ -1,38 +1,24 @@
-<style>
-nav {
-display: flex;
-justify-content: space-around;
-background-color: black;
-color: aliceblue;
-padding: 10px;
-}
-nav a {
-  color: antiquewhite;
-  text-decoration: none;
-}
+<nav class="navbar">
+  <div class="navbar-left">
+  <a routerLink=""><img src="images/Logo.jpg" alt="Logo" class="logo"></a>
+  </div>
 
-nav a.active{
-  color: crimson;
-  text-decoration: underline;
-}
+  <div class="navbar-center">
+    <button class="nav-btn" routerLink="/figuras" routerLinkActive="active">Figuras</button>
+    <button class="nav-btn" routerLink="/juegos" routerLinkActive="active">Juegos</button>
+    <button class="nav-btn" routerLink="/comics" routerLinkActive="active">Comics</button>
+    <input type="text" placeholder="Placeholder" class="nav-input">
+  </div>
 
-
-</style>
+  <div class="navbar-right">
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
 
 
 
-
-<nav>
-
-<a routerLink="/" routerLinkActive="active"
-  [routerLinkActiveOptions]="{exact:true}">Principal</a>
-
-<a routerLink="/articulos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Articulos</a>
-
-<a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Registro Usuarios</a>
-
-<a routerLink="/contacto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Contacto</a>
-
-
-
+    <button class="auth-btn login" routerLink="/login">Login</button>
+    <button class="auth-btn register" routerLink="/registrar">Registrar</button>
+  </div>
 </nav>
