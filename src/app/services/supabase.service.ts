@@ -1,4 +1,5 @@
 
+
 import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
@@ -18,6 +19,9 @@ export class SupabaseService {
     this.supabase = createClient(supabaseUrl, supabaseKey);
   }
 
+
+
+
   // Método para obtener artículos
   async getArticulos() {
     const { data, error } = await this.supabase
@@ -27,13 +31,16 @@ export class SupabaseService {
     return data;
   }
 
-  // Método para insertar un artículo
-  async addArticulo(nombre: string, caracteristicas: string, precio: number) {
-    const { data, error } = await this.supabase
-      .from('articulos')
-      .insert([{ nombre: nombre, caracteristicas: caracteristicas, precio: precio }]);
-    if (error) throw error;
-    return data;
+  // Método para añadir cliente
+  async addCliente(nombre: string, apellido: string, email: string, contraseña: string, direccion: string, telefono: string) {
+    try {
+      const { data, error } = await this.supabase
+        .from('cliente')
+        .insert([{ nombre: nombre, apellido: apellido, email: email, contraseña: contraseña, direccion: direccion, telefono: telefono }]);
+      return { error, data };
+    } catch (error) {
+      return { error, data: null };
+    }
   }
 
   // Método para borrar un artículo
@@ -56,26 +63,8 @@ export class SupabaseService {
     return true;
   }
 
-//Metodos para el registro de usuarios
-  async getUsuarios() {
-    const { data, error } = await this.supabase
-      .from('usuarios')
-      .select('*');
-    if (error) throw error;
-    return data;
-  }
 
-  // Método para añadir usuario
- async addUsuarios(email: string, password: string, name: string) {
-  const { data, error } = await this.supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: { name } // metadata del usuario
-    }
-  });
 
-  return { data, error };
-}
+
 }
 

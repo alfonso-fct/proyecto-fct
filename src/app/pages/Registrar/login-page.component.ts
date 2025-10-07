@@ -27,34 +27,42 @@ export class RegistroUsuarioPageComponent {
   message = '';
 
    constructor(
-    private fb: FormBuilder,
-    private supabase: SupabaseService
+     private fb: FormBuilder,
+     private supabase: SupabaseService
   ) {
 
 
 
-  this.registerForm = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-  });}
+    this.registerForm = this.fb.group({
+      nombre: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      direccion: ['', Validators.required],
+      telefono: ['', Validators.required]
+    });
+  }
 
   async onSubmit() {
     this.loading = true;
     this.message = '';
-
-    const { name, email, password } = this.registerForm.value;
-
-    if (email && password && name) {
-      const { error } = await this.supabase.addUsuarios(email, password, name);
-
-      if (error) {
-        this.message = 'Error: ' + error.message;
-      } else {
-        this.message = 'Registro exitoso. Revisa tu correo para confirmar tu cuenta.';
-      }
+    const { nombre, apellidos, email, password, direccion, telefono } = this.registerForm.value;
+    // Añadir los datos directamente a la tabla clientes
+    const { error } = await this.supabase.addCliente(
+      nombre,
+      apellidos,
+      email,
+      password,
+      direccion,
+      telefono
+    );
+    if (error) {
+      const msg = typeof error === 'object' && error !== null && 'message' in error ? (error as any).message : JSON.stringify(error);
+      this.message = 'Error al guardar datos del cliente: ' + msg;
+    } else {
+      this.message = 'Cliente añadido correctamente.';
+      this.registerForm.reset();
     }
-
     this.loading = false;
   }
 
