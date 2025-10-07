@@ -1,10 +1,12 @@
 /* ====== NAVBAR BASE ====== */
+
 .navbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background-color: #222;
-  padding: 10px 40px;
+  padding: 10px 5vw;
   color: white;
   font-family: Arial, sans-serif;
 }
@@ -23,11 +25,7 @@
 }
 
 /* ====== CENTER BUTTONS ====== */
-.navbar-center {
-  display: flex;
-  gap: 20px;
-  margin-left: -700px;
-}
+
 
 .nav-btn {
   background-color: #111;
@@ -134,15 +132,32 @@ input:checked + .slider:before {
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+
+  .nav-btn {
+    background-color: #111;
+    color: #fff;
+    border: none;
+    padding: 10px 2vw;
+    min-width: 90px;
+    max-width: 180px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    white-space: nowrap;
   }
 
-  .navbar-center {
-    order: 3;
-  }
+.navbar-center {
+  display: flex;
+  gap: 2vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 200px;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
 
   .navbar-right {
     order: 2;
