@@ -32,14 +32,14 @@ export class SupabaseService {
   }
 
   // Método para añadir cliente
-  async addCliente(nombre: string, apellido: string, email: string, contraseña: string, direccion: string, telefono: string) {
+  async addCliente(nombre: string, apellido: string, email: string, password: string, direccion: string, telefono: string) {
     try {
       const { data, error } = await this.supabase
         .from('cliente')
         .insert([{ nombre: nombre,
     apellido: apellido,
     email: email,
-    contraseña: contraseña,
+    password: password,
     direccion: direccion,
     telefono: telefono }]);
       return { error, data };
@@ -68,8 +68,30 @@ export class SupabaseService {
     return true;
   }
 
+  // Método para autenticar cliente
+   async loginCliente(email: string, password: string) {
+  try {
+    // Busca un registro que coincida con email y contraseña
+    const { data, error } = await this.supabase
+      .from('cliente')
+      .select('*')
+      .eq('email', email)
+      .eq('password', password)
+      .single();
 
+    if (error) {
+      return { success: false, message: 'Error en la consulta: ' + error.message };
+    }
 
+    if (data) {
+      return { success: true, message: 'Identificación correcta', cliente: data };
+    } else {
+      return { success: false, message: 'Correo o contraseña incorrectos' };
+    }
+  } catch (err) {
+    return { success: false, message: 'Error inesperado: ' + (err as Error).message };
+  }
+}
 
 }
 
