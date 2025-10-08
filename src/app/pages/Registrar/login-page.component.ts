@@ -37,7 +37,7 @@ export class RegistroUsuarioPageComponent {
       nombre: ['', Validators.required,],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      contraseña: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       direccion: ['', Validators.required],
       telefono: ['', Validators.required]
     });
@@ -46,13 +46,13 @@ export class RegistroUsuarioPageComponent {
   async onSubmit() {
     this.loading = true;
     this.message = '';
-    const { nombre, apellido, email, contraseña, direccion, telefono } = this.registerForm.value;
+    const { nombre, apellido, email, password, direccion, telefono } = this.registerForm.value;
     // Añadir los datos directamente a la tabla clientes
     const { error } = await this.supabase.addCliente(
       nombre,
       apellido,
       email,
-      contraseña,
+      password,
       direccion,
       telefono
     );
