@@ -16,6 +16,7 @@
   text-shadow: 1px 1px 10px #222, 0 0 10px #ff4081;
 }
 /* Estilo para el título principal */
+
 h1 {
   font-family: 'Orbitron', 'Arial', sans-serif;
   font-size: 3rem;
@@ -27,10 +28,12 @@ h1 {
   font-weight: bold;
   transition: color 0.3s;
 }
+
 h1:hover {
   color: #ff4081;
   text-shadow: 2px 2px 12px #222, 0 0 16px #ff4081;
 }
+
 .logo {
   width: 200px;
   height: 200px;
@@ -41,4 +44,8 @@ h1:hover {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+.category-image {
+
 }

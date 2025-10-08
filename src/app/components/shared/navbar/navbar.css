@@ -43,7 +43,7 @@
 }
 
 .nav-btn.active {
-  background-color: #26d9a7; /* verde menta */
+  background-color: #19a5f2; /* verde menta */
   color: #000;
 }
 
@@ -52,6 +52,83 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== LUPA ===== */
+
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: transparent;
+  height: 40px;
+  border-radius: 40px;
+  padding: 0;
+  width: 40px;
+  overflow: hidden;
+  transition: width 0.4s ease, background 0.3s ease, padding 0.3s ease;
+}
+
+.navbar-left .searchBox:hover,
+.navbar-left .searchBox:focus-within {
+  width: 240px;
+  background: #2f3640;
+  padding: 0 4px;
+}
+
+.searchBox:hover > .searchButton,
+.searchBox:focus-within > .searchButton {
+  background: white;
+  color: #2f3640;
+}
+
+.searchButton {
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.searchInput {
+  flex: 0 0 0;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.searchBox:hover > .searchInput,
+.searchBox:focus-within > .searchInput {
+  flex: 1;
+  opacity: 1;
+  padding: 0 10px 0 12px;
+}
+
+@media screen and (max-width: 620px) {
+  .navbar-left .searchBox:hover,
+  .navbar-left .searchBox:focus-within {
+    width: 180px;
+  }
 }
 
 /* Switch */
@@ -84,7 +161,7 @@
   width: 14px;
   left: 3px;
   bottom: 3px;
-  background-color: #26d9a7;
+  background-color: #19a5f2;
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -98,7 +175,7 @@ input:checked + .slider:before {
 /* búsqueda */
 .nav-input {
   background-color: transparent;
-  border: 1px solid #26d9a7;
+  border: 1px solid #19a5f2;
   padding: 5px 10px;
   color: white;
   outline: none;
@@ -115,13 +192,23 @@ input:checked + .slider:before {
 }
 
 .auth-btn.login {
-  background-color: #26d9a7;
-  color: #000;
+  background-color: #222;
+  color: #19a5f2;
   border-radius: 15px;
+  border-style: solid;
+  border-color: #19a5f2;
+}
+
+.auth-btn.login:hover {
+  background-color: #19a5f2;
+  color: #222;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #19a5f2;
 }
 
 .auth-btn.register {
-  background-color: #26d9a7;
+  background-color: #19a5f2;
   color: #000;
   border-radius: 15px;
 }
@@ -159,8 +246,5 @@ input:checked + .slider:before {
   box-sizing: border-box;
 }
 
-  .navbar-right {
-    order: 2;
-  }
-}
 
+}
