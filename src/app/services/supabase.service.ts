@@ -36,7 +36,12 @@ export class SupabaseService {
     try {
       const { data, error } = await this.supabase
         .from('cliente')
-        .insert([{ nombre: nombre, apellido: apellido, email: email, contraseña: contraseña, direccion: direccion, telefono: telefono }]);
+        .insert([{ nombre: nombre,
+    apellido: apellido,
+    email: email,
+    contraseña: contraseña,
+    direccion: direccion,
+    telefono: telefono }]);
       return { error, data };
     } catch (error) {
       return { error, data: null };

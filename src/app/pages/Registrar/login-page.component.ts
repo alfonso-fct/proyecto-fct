@@ -34,10 +34,10 @@ export class RegistroUsuarioPageComponent {
 
 
     this.registerForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellidos: ['', Validators.required],
+      nombre: ['', Validators.required,],
+      apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      contraseña: ['', [Validators.required, Validators.minLength(6)]],
       direccion: ['', Validators.required],
       telefono: ['', Validators.required]
     });
@@ -46,13 +46,13 @@ export class RegistroUsuarioPageComponent {
   async onSubmit() {
     this.loading = true;
     this.message = '';
-    const { nombre, apellidos, email, password, direccion, telefono } = this.registerForm.value;
+    const { nombre, apellido, email, contraseña, direccion, telefono } = this.registerForm.value;
     // Añadir los datos directamente a la tabla clientes
     const { error } = await this.supabase.addCliente(
       nombre,
-      apellidos,
+      apellido,
       email,
-      password,
+      contraseña,
       direccion,
       telefono
     );
