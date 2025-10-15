@@ -5,6 +5,7 @@ import { FigurasComponent } from './pages/figuras/figuras.component';
 import { JuegosComponent } from './pages/juegos/juegos.component';
 import { ComicsComponent } from './pages/comics/comics.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FormProductoComponent } from './pages/Gestion de productos/Gestion_de_productos.component';
 
 export const routes: Routes = [
 
@@ -33,6 +34,11 @@ export const routes: Routes = [
   path:'login',
   component: LoginComponent,
 },
+{
+  path:'Gestion_de_productos',
+  component: FormProductoComponent,
+},
+
 
 
 

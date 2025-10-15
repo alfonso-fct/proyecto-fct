@@ -1,0 +1,157 @@
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: #19a5f2;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Formulario */
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+form label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Botón Guardar Producto */
+.button-container {
+  grid-column: 1 / -1; /* ocupa toda la fila */
+  display: flex;
+  justify-content: center;
+}
+
+.btn-guardar {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: auto;
+}
+
+.btn-guardar:hover {
+  background-color: #2563eb;
+}
+
+/* Mensajes de éxito o error */
+.mensaje {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Tabla de productos */
+.table-container {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f3f4f6;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: #0376e9;
+}
+
+/* Imagenes de productos */
+.product-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Botones de acción */
+.btn-action {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+  margin-right: 0.3rem;
+}
+
+.btn-edit {
+  background-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.btn-edit:hover {
+  background-color: #19a5f2;
+}
+
+.btn-delete {
+  background-color: #fecaca;
+  color: #b91c1c;
+}
+
+.btn-delete:hover {
+  background-color: #fca5a5;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  th, td {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+}
