@@ -19,17 +19,56 @@ export class SupabaseService {
     this.supabase = createClient(supabaseUrl, supabaseKey);
   }
 
-
-
-
-  // Método para obtener artículos
-  async getArticulos() {
+  async getProductos() {
     const { data, error } = await this.supabase
-      .from('articulos')
-      .select('*');
+      .from('producto')
+      .select('*')
+      .order('idproducto', { ascending: false });
     if (error) throw error;
     return data;
   }
+
+  async insertarProducto(producto: any) {
+    const { data, error } = await this.supabase
+      .from('producto')
+      .insert([producto]);
+    if (error) throw error;
+    return data;
+  }
+
+  async actualizarProducto(id: number, producto: any) {
+    const { data, error } = await this.supabase
+      .from('producto')
+      .update(producto)
+      .eq('idproducto', id);
+    if (error) throw error;
+    return data;
+  }
+
+  async eliminarProducto(id: number) {
+    const { error } = await this.supabase
+      .from('producto')
+      .delete()
+      .eq('idproducto', id);
+    if (error) throw error;
+  }
+
+  async subirImagen(file: File) {
+    const filePath = `producto/${Date.now()}_${file.name}`;
+    const { data, error } = await this.supabase.storage
+      .from('imagen')
+      .upload(filePath, file);
+
+    if (error) throw error;
+
+    const { data: urlData } = this.supabase.storage
+      .from('imagen')
+      .getPublicUrl(filePath);
+
+    return urlData.publicUrl;
+  }
+
+
 
   // Método para añadir cliente
   async addCliente(nombre: string, apellido: string, email: string, password: string, direccion: string, telefono: string) {
@@ -48,25 +87,6 @@ export class SupabaseService {
     }
   }
 
-  // Método para borrar un artículo
-  async deleteArticulo(id: number) {
-    const { error } = await this.supabase
-      .from('articulos')
-      .delete()
-      .eq('id', id);
-    if (error) throw error;
-    return true;
-  }
-
-  // Método para modificar un artículo
-  async updateArticulo(id: number, nombre: string, caracteristicas: string, precio: number) {
-    const { error } = await this.supabase
-      .from('articulos')
-      .update({ nombre, caracteristicas, precio })
-      .eq('id', id);
-    if (error) throw error;
-    return true;
-  }
 
   // Método para autenticar cliente
    async loginCliente(email: string, password: string) {
