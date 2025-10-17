@@ -15,7 +15,7 @@ export class SupabaseService {
   constructor() {
     // Aquí debes poner tu URL y API key de Supabase
     const supabaseUrl = 'https://ryajewgpwcpzwhunwury.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5YWpld2dwd2NwendodW53dXJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4MDc4ODcsImV4cCI6MjA3NDM4Mzg4N30.D9ptsDn4gHTy326emWXJLGdRapWDODCHy6FZx8t0SoE';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5YWpld2dwd2NwendodW53dXJ5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODgwNzg4NywiZXhwIjoyMDc0MzgzODg3fQ.hhMuNfYpUAgao2LU0NE5j2eKFbjqrJ8XZnp9uY0ucwY';
     this.supabase = createClient(supabaseUrl, supabaseKey);
   }
 
@@ -56,13 +56,13 @@ export class SupabaseService {
   async subirImagen(file: File) {
     const filePath = `producto/${Date.now()}_${file.name}`;
     const { data, error } = await this.supabase.storage
-      .from('imagen')
+      .from('Imagenes')
       .upload(filePath, file);
 
     if (error) throw error;
 
     const { data: urlData } = this.supabase.storage
-      .from('imagen')
+      .from('Imagenes')
       .getPublicUrl(filePath);
 
     return urlData.publicUrl;
