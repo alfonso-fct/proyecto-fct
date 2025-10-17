@@ -14,8 +14,8 @@ export class SupabaseService {
 
   constructor() {
     // Aquí debes poner tu URL y API key de Supabase
-    const supabaseUrl = 'https://ryajewgpwcpzwhunwury.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5YWpld2dwd2NwendodW53dXJ5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODgwNzg4NywiZXhwIjoyMDc0MzgzODg3fQ.hhMuNfYpUAgao2LU0NE5j2eKFbjqrJ8XZnp9uY0ucwY';
+    const supabaseUrl = process.env.SUPABASE_PUBLIC_URL!;
+    const supabaseKey = process.env.SUPABASE_ACCESS_KEY!; 
     this.supabase = createClient(supabaseUrl, supabaseKey);
   }
 
